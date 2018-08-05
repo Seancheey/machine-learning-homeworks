@@ -29,12 +29,7 @@ centroids = zeros(K, n);
 %m = data_num n = feature_num
 %c = test_centroid_index i = test_data_index
 for c=[1:K]
-    cent = [];
-    for i=[1:m]
-        if c == idx(i)
-            cent = [cent;X(i,1:end)];
-        end
-    end
+    cent = X(idx==c,1:end);
     cent = sum(cent)/size(cent,1);
     centroids(c,1:end) = cent;
 end
