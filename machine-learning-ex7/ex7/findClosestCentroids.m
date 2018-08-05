@@ -25,11 +25,12 @@ idx = zeros(size(X,1), 1);
 % centroids: row: cnum, col: feature
 for i=[1:size(X)]
     x = X(i,1:end);
-    lens = zeros(size(centroid),1);
+    lens = zeros(size(centroids),1);
     for c=[1:size(centroids)]
         centroid = centroids(c,1:end);
-        lens(c) = 
+        lens(c) = sum((x .- centroid).^2);
     end
+    [_, idx(i)] = min(lens);
 end
 
 
